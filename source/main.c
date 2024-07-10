@@ -9,7 +9,7 @@
 #include <inttypes.h>
 
 #include "video.h"
-#include "libpatcher/libpatcher.h"
+#include "libpatcher.h"
 #include "haxx.h"
 #include "wad_strerror.h" // split into a seperate file because it takes up a lot of space
 #include "crc.h"
@@ -30,11 +30,11 @@ int main()
 	uint32_t ohbc_00000000_crc = CRC32(&ohbc_00000000_bin, ohbc_00000000_bin_size);
 	uint32_t ohbc_00000001_crc = CRC32(&ohbc_00000001_bin, ohbc_00000001_bin_size);
 
-	printf("certs: %010p, expected 0xbf34f23d\n", certs_crc);
-	printf("ohbc_tik: %010p, expected 0x6f97d819\n", ohbc_tik_crc);
-	printf("ohbc_tmd: %010p, expected 0x8fe6dff8\n", ohbc_tmd_crc);
-	printf("ohbc_00000000: %010p, expected 0x0a77ddf9\n", ohbc_00000000_crc);
-	printf("ohbc_00000001: %010p, expected 0xc9c87db1\n", ohbc_00000001_crc);
+	printf("certs: 0x%08X, expected 0xBF34F23D\n", certs_crc);
+	printf("ohbc_tik: 0x%08X, expected 0x6F97D819\n", ohbc_tik_crc);
+	printf("ohbc_tmd: 0x%08X, expected 0x8FE6DFF8\n", ohbc_tmd_crc);
+	printf("ohbc_00000000: 0x%08X, expected 0x0A77DDF9\n", ohbc_00000000_crc);
+	printf("ohbc_00000001: 0x%08X, expected 0xC9C87DB1\n", ohbc_00000001_crc);
 	
 	if (certs_crc != 3207918141 || ohbc_tik_crc != 1872222233 || ohbc_tmd_crc != 2414272504 ||
 		ohbc_00000000_crc != 175627769 || ohbc_00000001_crc != 3385359793)
@@ -42,7 +42,8 @@ int main()
 		printf("uh oh\nHanging...");
 		while (1)
 		{
-			printf("");
+			printf(".");
+			sleep(1);
 		}
 	}
 
@@ -58,7 +59,8 @@ int main()
 		printf("AHBPROT not disabled? what\nHanging...");
 		while (1)
 		{
-			printf("");
+			printf(".");
+			sleep(1);
 		}
 	}
 
@@ -67,7 +69,8 @@ int main()
 		printf("failed to apply IOS patches!\nHanging...");
 		while (1)
 		{
-			printf("");
+			printf(".");
+			sleep(1);
 		}
 	}
 
@@ -131,12 +134,13 @@ int main()
 
 	if (ohno != 0)
 	{
-		printf("\nFailure! (Do you already have the hbc installed?)\nHanging...");
+		printf("\nFailure! (Do you already have the hbc installed?)\nHanging...");}
 		while (1)
 		{
-			printf("");
+			printf(".");
+			sleep(1);
 		}
-	}
+	
 	printf("Success!");
 	sleep(2);
 

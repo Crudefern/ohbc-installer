@@ -17,15 +17,15 @@ include $(DEVKITPPC)/wii_rules
 #---------------------------------------------------------------------------------
 TARGET		:=	ohbc-installer
 BUILD		:=	build
-SOURCES		:=	source/libpatcher source
+SOURCES		:=	source
 DATA		:=	data
-INCLUDES	:=
+INCLUDES	:=  include
 
 #---------------------------------------------------------------------------------
 # options for code generation
 #---------------------------------------------------------------------------------
 
-CFLAGS	= -g -O2 -Wall $(MACHDEP) $(INCLUDE)
+CFLAGS	= -g -O2 -Wall $(MACHDEP) $(INCLUDE) -Wno-incompatible-pointer-types
 CXXFLAGS	=	$(CFLAGS)
 
 LDFLAGS	=	-g $(MACHDEP) -Wl,-Map,$(notdir $@).map
