@@ -134,13 +134,13 @@ int main()
 
 	if (ohno != 0)
 	{
-		printf("\nFailure! (Do you already have the hbc installed?)\nHanging...");}
+		printf("\nFailure! (Do you already have the hbc installed?)\nHanging...");
 		while (1)
 		{
 			printf(".");
 			sleep(1);
 		}
-	
+	}
 	printf("Success!");
 	sleep(2);
 
